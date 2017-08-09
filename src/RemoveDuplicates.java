@@ -1,22 +1,23 @@
-public class Solution {
-    public int removeDuplicates(int[] nums) {
+public class RemoveDuplicates{
 
-      if( nums == null || nums.length == 0 )
-        return 0;
-      if( nums.length == 1 )
-        return nums.length;
-      
-      int prev = nums[0];
-      int len = 0;
-      for( int i = 1; i < nums.length; i++ ){
-        if( prev != nums[i] ){
-          len++;
-          prev = nums[i];
+    public int removeDuplicates2(int[] nums) {
+    if (nums.length == 0) return 0;
+    int i = 0;
+    for (int j = 1; j < nums.length; j++) {
+        if (nums[j] != nums[i]) {
+            i++;
+            nums[i] = nums[j];
         }
-        
-      }
-      
-      return len;
-      
     }
+    return i + 1;
+	}
+
+
+	public static void main(String[] args){
+
+		RemoveDuplicates obj = new RemoveDuplicates();
+		int[] input = {1,1,2};
+		System.out.println(obj.removeDuplicates2 ( input ));
+
+	}
 }
